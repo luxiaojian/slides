@@ -3,11 +3,21 @@
 body {
     margin: 0;
     padding: 0;
+    background: #eff0f4;
 }
 
 body.reverse {
-    background: #000;
-    color: #FFF;
+    background: #3c4451;
+    color: #d1d6dc;
+}
+
+body.reverse h1, 
+body.reverse h2, 
+body.reverse h3, 
+body.reverse h4, 
+body.reverse h5, 
+body.reverse h6 {
+  color: #d1d6dc;
 }
 
 @font-face { 
@@ -24,8 +34,6 @@ body.reverse {
     text-align: center;
     padding: 1vh;
     font-family: "SourceHanSansCN";
-    border-left: 1px dotted #CCC;
-    border-right: 1px dotted #CCC;
     overflow: hidden;
 }
 
@@ -35,11 +43,18 @@ body.reverse #slide {
 
 img {
     width: 100%;
+    box-shadow: 1px 1px 10px #999;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    padding-left: 4vh;
+    color: #3c4451;
+    /*-webkit-text-stroke: 2px #fff;*/
+    font-weight: 900;
+    text-align: center;
     font-weight: 100;
+    margin-bottom: 24px;
 }
 
 blockquote {
@@ -78,34 +93,40 @@ h6 {
 }
 
 ul, ol {
-    padding: 0 5vh;
+    padding: 0 16vh;
     margin: 0;
     text-align: left;
-    font-size: 20vh;
-    line-height: 28vh;
+    font-size: 8vh;
+    line-height: 12vh;
 }
 
 ol {
-    font-size: 11vh;
+    font-size: 8vh;
     line-height: 18vh;
 }
 
 li {
-    list-style: none;
+    list-style-type: disc;
+    font-weight: 300;
+    line-height: 1.8;
+    color:#61646f;
 }
 
 p {
     margin: 0;
     padding: 0;
+    line-height: 1.4;
+    font-size: 5vh;
+    color:#61646f;
 }
 
 strong {
-    color: #A20004;
+    color: #b11d21;
 }
 
 em {
     font-style: normal;
-    color:#777;
+    color:#61646f;
 }
 
 a {
@@ -113,3 +134,8 @@ a {
     text-decoration: underline;
 }
 
+code {
+   text-align: left;
+   font-size: 3vh;
+   overflow-y: scroll;
+}

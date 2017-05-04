@@ -3,90 +3,137 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <title>Thinging In Programing</title>
+        <title>前端依赖健康监控服务的实践</title>
         <link rel="stylesheet" href="./slide.css" />
+        <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" />
         <script src="./hyperdown/Parser.js"></script>
+        <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
         <script src="./slide.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
     </head>
     <body>
 <div id="slide"></div>
 <script type="text/markdown">
-# 编程随想
+### 前端依赖
+##### 监控服务的实践
 -------
 # 我
 -------
-1. **joyqi**@[segmentfault.com](https://segmentfault.com)
-2. Github, Twitter, Weibo
-3. PHP, JS (Node, Coffee)
-4. 10年, 4公司, 创业中
+1. **走宽**@(huijian.lu@ele.me)
+2. JS(Node.js + Vue)
+3. 饿了么大前端 - Node研发组 - 后端
 -------
-## 高桥流
+### 程序员小明的故事
 -------
-## **Ruby**
-### 高桥征义
+##### 做一个工具解决项目依赖模块**版本更新**和**不同环境**之间版本差异的问题.
 -------
-# 懒
+> ### 一脸无奈, :joy
 -------
-## 源动力
+### 先找找开源
 -------
-### 知行合一
--------
-## **程序员**
--------
-![程序员](./img/1.png)
+#### 工具 or 服务  
+
+![现有方案](./img/scheme.png)
 
 -------
-## 超能力
+###### 功能需求点 
+
+1. 自动检测依赖更新
+2. 模块更新收到提醒
+3. 详细的更新日志
+4. 收集模块黑名单
+5. **和发布系统整合**
 -------
-# **解放**
-## 生产力
+##### 问题难点
+
+* 版本更新提醒策略
+* 发布流程整合
+* 模块黑名单和评分
+* 优雅接入方式
 -------
-### 重复劳动
-##### _量变产生质变_
+### 版本更新提醒策略
 -------
-> # 编程语言
+#### 语义化版本
+
+###### _主版本.次版本.修订_
 -------
-* 现实**→**抽象
-* 类神经指令
-* 非常高级
+#### 更新提醒策略
+
+* 设置升级更新模式（strict、loose）
+* 引入白名单（白名单忽略升级）
+* 主版本和次版本更新，给项目提 PR
+* 问题模块版本，给项目提 issue
 -------
-### 怎么开始?
+### 优雅的接入服务
 -------
-# 兴趣
+#### 命令行工具
+
+1. login
+2. enable
+3. disable
+
 -------
-# 我的
-## **第一次**
+#### 批量快速接入  
+
+1. 在线package.json的地址
+2. github / gitlab root权限
+
 -------
-* 成就感
-* 思维方式
-* 金钱回报
+##### 更加友好的交互 
+
+1. 登录绑定 Github / Gitlab账户
+2. 界面批量接入项目，处理依赖更新
+
 -------
-### 要爱
-### 请深爱
+##### 黑名单和评分  
+
+1. 包安全/漏洞检查（nodesecurity.io）
+2. 用户上报黑名单
+3. npm模块评分
+
 -------
-# **大学**
+###### Github / Gitlab API  
+
+1. 权限认证（oAuth认证）
+2. 项目提 PR
+3. issue、webhook、读取文件
+
 -------
-1. 基础知识/思维方式
-2. 掌握一门编程语言
-3. 有自己的项目
-4. 参与社区/进入圈子
+![系统架构](./img/architecture.png)
+
 -------
-# **哲学问题**
+### **撸起袖子开干！**
 -------
-# 趋势
+##### 遇到痛点问题
+
+* 项目依赖如何更新？
+* Github 接口请求限制（认证后5000次每小时）
+* 模块依赖的依赖出问题
 -------
-## 造轮子
-#### _加速_
+###### 项目依赖更新 
+
+1. 定时拉取 package.json, 更新项目模块
+2. webhook 触发模块更新
+
 -------
-# 变革
+###### Github 接口请求限制  
+
+```js
+module.exports = (arr, times, cb) => {
+  for (let ele of arr) setTimeout(cb.bind(this, ele), Math.random() * times);
+};
+```
 -------
-#### 程序掌控一切只是时间问题
+###### 模块依赖的依赖  
+
+从 CI 系统中提取安装依赖的列表，和服务中黑名单模块列表对比。
+
 -------
-#### 人工智能会是一个大问题!
+> ### 我不是小明...
 -------
-> # 未来
--------
-### The End
+## 谢谢
 </script>
     </body>
 </html>
