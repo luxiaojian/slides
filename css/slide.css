@@ -96,19 +96,19 @@ ul, ol {
     padding: 0 16vh;
     margin: 0;
     text-align: left;
-    font-size: 8vh;
-    line-height: 12vh;
+    font-size: 10vh;
+    line-height: 14vh;
 }
 
 ol {
     font-size: 8vh;
-    line-height: 18vh;
+    line-height: 1.4;
 }
 
 li {
-    list-style-type: disc;
+    list-style-type: circle;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.4;
     color:#61646f;
 }
 
@@ -117,6 +117,8 @@ p {
     padding: 0;
     line-height: 1.4;
     font-size: 5vh;
+    display: inline-block;
+    vertical-align: 12px;
     color:#61646f;
 }
 
