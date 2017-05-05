@@ -22,10 +22,10 @@ body.reverse h6 {
 
 @font-face { 
 	font-family: "SourceHanSansCN"; 
-	src: url(./fonts/SourceHanSansCN-Regular.eot); 
+	src: url(../fonts/SourceHanSansCN-Regular.eot); 
 	src: local(" "), 
-		url(./fonts/SourceHanSansCN-Regular.otf) format("opentype"), 
-		url(./fonts/SourceHanSansCN-Regular.woff) format("woff");
+		url(../fonts/SourceHanSansCN-Regular.otf) format("opentype"), 
+		url(../fonts/SourceHanSansCN-Regular.woff) format("woff");
 
 }
 
