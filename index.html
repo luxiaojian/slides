@@ -62,16 +62,16 @@
 -------
 #### 更新提醒策略
 
-* 设置升级更新模式（strict、loose）
-* 引入白名单（白名单忽略升级）
 * 主版本和次版本更新，给项目提 PR
 * 问题模块版本，给项目提 issue
+* 引入白名单（白名单忽略升级）
+* 设置升级更新模式（strict、loose）
 -------
 ##### 黑名单  
 
 1. 包安全/漏洞检查
-  * nodesecurity Advisories list
-  * snyk Vulnerability DB
+  * [nodesecurity Advisories list](https://nodesecurity.io/advisories)
+  * [snyk Vulnerability DB](https://snyk.io/vuln/)
 2. 用户上报黑名单
 
 -------
@@ -103,7 +103,7 @@
 #### 批量快速接入  
 
 1. 在线package.json的地址
-2. github / gitlab root权限
+2. Github / Gitlab root权限
 -------
 
 ![架构图-2](./img/architecture-2.png)
@@ -111,14 +111,15 @@
 -------
 ##### 更加友好的交互 
 
-1. 登录绑定 Github / Gitlab账户
+1. 登录绑定 Github / Gitlab 账户
 2. 界面批量接入项目，处理依赖更新
 -------
 ###### Github / Gitlab API  
 
 1. 权限认证（oAuth认证）
 2. 项目提 PR
-3. issue、webhook、读取文件
+3. issue、webhook（push、status）、读取文件
+4. Github 接口请求限制（5000次每小时）
 
 -------
 ![系统架构](./img/architecture.png)
@@ -130,7 +131,7 @@
 
 * 项目依赖如何更新？
 * 模块依赖的依赖出问题
-* Github 接口请求限制（5000次每小时）
+* 任务集中执行，DB 报警
 -------
 ###### 项目依赖更新 
 
@@ -138,7 +139,7 @@
 2. webhook 触发模块更新
 
 -------
-###### Github 接口请求限制  
+###### DB 报警  
 
 ```js
 module.exports = (arr, times, cb) => {
@@ -149,6 +150,9 @@ module.exports = (arr, times, cb) => {
 ###### 模块依赖的依赖  
 
 从 CI 系统中提取安装依赖的列表，和服务中黑名单模块列表对比。
+
+-------
+## 最后
 
 -------
 > ### 我不是小明...
